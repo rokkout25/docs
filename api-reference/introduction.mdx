@@ -4,22 +4,27 @@ description: "Example section for showcasing API endpoints"
 ---
 
 <Note>
-  To use this API, you need a valid API key, you can obtain a key by contacting the developers.
+  Welcome to the API reference!  
+
+  **Important Information:**
+  - To use this API, you need a valid **API key**, which can be obtained by contacting the developers.
+  - This is a **paid API** with a base price of **$8/month**.
+  - All requests must include your API key either via:
+    1. **Authorization Header**: `Authorization: "api_key"`
+    2. **Query Parameter**: `?key=api_key`
+  - For support or questions, you can reach out to the developers directly.
 </Note>
 
-## Authentication
-
-There are two ways to authenticate your API requests. **Authorization Header** or **Query Parameter**
+## Authentication Example
 
 ```python
-# Authorization Header
+# Using Authorization Header
 response = await client.get(
     "/profile/johndoe",
     headers={"Authorization": "api_key"}
 )
 
-# Query Parameter
+# Using Query Parameter
 response = await client.get(
     "/profile/johndoe?key=api_key"
 )
-```
