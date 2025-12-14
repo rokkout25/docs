@@ -5,6 +5,15 @@
       "url": "https://api.vile.bot"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token"
+      }
+    }
+  },
   "paths": {
     "/soundcloud/track": {
       "get": {
@@ -15,18 +24,6 @@
           {
             "name": "url",
             "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "deprecated": false,
-            "allowEmptyValue": false,
-            "allowReserved": false
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Bearer token for authentication",
             "schema": {
               "type": "string"
             },
@@ -75,8 +72,12 @@
               }
             }
           }
-        },
-        "deprecated": false
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/screenshot": {
@@ -95,8 +96,7 @@
               }
             }
           }
-        },
-        "deprecated": false
+        }
       }
     }
   }
