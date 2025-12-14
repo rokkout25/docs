@@ -73,6 +73,10 @@
     "light": "/vileTransparent.png",
     "dark": "/vileTransparent.png"
   },
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
   "navbar": {
     "primary": {
       "type": "button",
