@@ -1,217 +1,2569 @@
 {
-  "openapi": "3.1.0",
-  "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
-  "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+   "info":{
+      "title":"vile API",
+      "version":"0.5.0",
+      "description":"vile API services"
+   },
+   "openapi":"3.1.0",
+   "servers":[
+      {
+         "url":"/"
+      }
+   ],
+   "paths":{
+      "/":{
+         "get":{
+            "summary":"Main",
+            "description":"Main page of the API",
+            "operationId":"Main",
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
+               }
+            },
+            "deprecated":false
+         }
       },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
+      "/routes":{
+         "get":{
+            "summary":"Routes",
+            "description":"Get the list of available routes",
+            "operationId":"RoutesRoutes",
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "items":{
+                              "type":"string"
+                           },
+                           "type":"array"
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
+      "/avatars/{user_id}":{
+         "get":{
+            "summary":"GetAvatar",
+            "description":"View a users avatar history",
+            "operationId":"AvatarsUserIdGetAvatar",
+            "parameters":[
+               {
+                  "name":"user_id",
+                  "in":"path",
+                  "schema":{
+                     "type":"integer"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
             ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
+      "/soundcloud/track":{
+         "get":{
+            "summary":"Track",
+            "description":"Get SoundCloud track information",
+            "operationId":"SoundcloudTrackTrack",
+            "parameters":[
+               {
+                  "name":"url",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/track_SoundCloudTrack"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/soundcloud/profile/{username}":{
+         "get":{
+            "summary":"Profile",
+            "description":"Get SoundCloud profile information",
+            "operationId":"SoundcloudProfileUsernameProfile",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/SoundCloudProfile"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/soundcloud/tracks/{user_id}":{
+         "get":{
+            "summary":"Tracks",
+            "description":"Get SoundCloud tracks from a profile",
+            "operationId":"SoundcloudTracksUserIdTracks",
+            "parameters":[
+               {
+                  "name":"user_id",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/Tracks"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/collage":{
+         "post":{
+            "summary":"Collage",
+            "description":"Create a collage from a list of image URLs",
+            "operationId":"CollageCollage",
+            "responses":{
+               "201":{
+                  "description":"Document created, URL follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/screenshot":{
+         "post":{
+            "summary":"Screenshot",
+            "description":"Take a safe screenshot of a webpage",
+            "operationId":"ScreenshotScreenshot",
+            "responses":{
+               "201":{
+                  "description":"Document created, URL follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/genius":{
+         "get":{
+            "summary":"Genius",
+            "description":"Get genius lyrics of a song",
+            "operationId":"GeniusGenius",
+            "parameters":[
+               {
+                  "name":"q",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/Genius"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/keys/create":{
+         "post":{
+            "summary":"Create",
+            "description":"Create a new API key",
+            "operationId":"KeysCreateCreate",
+            "requestBody":{
+               "content":{
+                  "application/json":{
+                     "schema":{
+                        "$ref":"#/components/schemas/CreateKeyBody"
+                     }
+                  }
+               },
+               "required":true
+            },
+            "responses":{
+               "201":{
+                  "description":"Document created, URL follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/keys/revoke/{key}":{
+         "post":{
+            "summary":"Revoke",
+            "description":"Revoke an existing API key",
+            "operationId":"KeysRevokeRevoke",
+            "parameters":[
+               {
+                  "name":"key",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "201":{
+                  "description":"Document created, URL follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/keys/view/{key}":{
+         "get":{
+            "summary":"View",
+            "description":"View an existing API key",
+            "operationId":"KeysViewView",
+            "parameters":[
+               {
+                  "name":"key",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/keys/list":{
+         "get":{
+            "summary":"List",
+            "description":"List all API keys",
+            "operationId":"KeysListList",
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "items":{
+                              "type":"object"
+                           },
+                           "type":"array"
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/instagram/profile/{username}":{
+         "get":{
+            "summary":"Profile",
+            "description":"Get Instagram profile information",
+            "operationId":"InstagramProfileUsernameProfile",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/instagram/stories/{user_id}":{
+         "get":{
+            "summary":"Stories",
+            "description":"Get Instagram profile information",
+            "operationId":"InstagramStoriesUserIdStories",
+            "parameters":[
+               {
+                  "name":"user_id",
+                  "in":"path",
+                  "schema":{
+                     "type":"integer"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/instagram/posts/{user_id}":{
+         "get":{
+            "summary":"Posts",
+            "description":"Get Instagram profile information",
+            "operationId":"InstagramPostsUserIdPosts",
+            "parameters":[
+               {
+                  "name":"user_id",
+                  "in":"path",
+                  "schema":{
+                     "type":"integer"
+                  },
+                  "required":true,
+                  "deprecated":false
+               },
+               {
+                  "name":"limit",
+                  "in":"query",
+                  "schema":{
+                     "type":"integer",
+                     "default":10
+                  },
+                  "required":false,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/instagram/post/{shortcode}":{
+         "get":{
+            "summary":"Post",
+            "description":"Get Instagram post information",
+            "operationId":"InstagramPostShortcodePost",
+            "parameters":[
+               {
+                  "name":"shortcode",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/media/{name}":{
+         "get":{
+            "summary":"Media",
+            "description":"idek what to put for ts",
+            "operationId":"MediaNameMedia",
+            "parameters":[
+               {
+                  "name":"name",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "text/plain":{
+                        "schema":{
+                           "type":"string"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/twitter/profile/{username}":{
+         "get":{
+            "summary":"Profile",
+            "description":"Get Twitter profile information",
+            "operationId":"TwitterProfileUsernameProfile",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/twitter/tweet":{
+         "get":{
+            "summary":"Tweet",
+            "description":"Get Twitter tweet information",
+            "operationId":"TwitterTweetTweet",
+            "parameters":[
+               {
+                  "name":"url",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/twitter/timeline":{
+         "get":{
+            "summary":"Timeline",
+            "description":"Get Twitter user recent posts",
+            "operationId":"TwitterTimelineTimeline",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"query",
+                  "schema":{
+                     "oneOf":[
+                        {
+                           "type":"string"
+                        },
+                        {
+                           "type":"null"
+                        }
+                     ]
+                  },
+                  "required":false,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/tiktok/user/{username}":{
+         "get":{
+            "summary":"User",
+            "description":"Get TikTok user profile information",
+            "operationId":"TiktokUserUsernameUser",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/TikTokUserInfo"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/tiktok/video":{
+         "get":{
+            "summary":"Video",
+            "description":"Get TikTok video information",
+            "operationId":"TiktokVideoVideo",
+            "parameters":[
+               {
+                  "name":"url",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/TikTokVideo"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/tiktok/posts/{username}":{
+         "get":{
+            "summary":"Posts",
+            "description":"Get TikTok user posts",
+            "operationId":"TiktokPostsUsernamePosts",
+            "parameters":[
+               {
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               },
+               {
+                  "name":"count",
+                  "in":"query",
+                  "schema":{
+                     "type":"integer",
+                     "default":10
+                  },
+                  "required":false,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "items":{
+                              "$ref":"#/components/schemas/TikTokVideo"
+                           },
+                           "type":"array"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/youtube/search":{
+         "get":{
+            "summary":"Search",
+            "description":"Search for a YouTube video",
+            "operationId":"YoutubeSearchSearch",
+            "parameters":[
+               {
+                  "name":"q",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
+      "/youtube/channel":{
+         "get":{
+            "summary":"Channel",
+            "description":"Get YouTube channel information",
+            "operationId":"YoutubeChannelChannel",
+            "parameters":[
+               {
+                  "name":"argument",
+                  "in":"query",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false,
+                  "allowEmptyValue":false,
+                  "allowReserved":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "type":"object"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
       }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+   },
+   "components":{
+      "schemas":{
+         "Artist":{
+            "properties":{
+               "url":{
+                  "type":"string"
+               },
+               "name":{
+                  "type":"string"
+               }
+            },
+            "type":"object",
+            "required":[
+               "name",
+               "url"
+            ],
+            "title":"Artist"
+         },
+         "BasicTikTokVideoAuthor":{
+            "properties":{
+               "avatar_url_list":{
+                  "items":{
+                     "type":"string"
+                  },
+                  "type":"array"
+               },
+               "nickname":{
+                  "type":"string"
+               },
+               "unique_id":{
+                  "type":"string"
+               }
+            },
+            "type":"object",
+            "required":[
+               "avatar_url_list",
+               "nickname",
+               "unique_id"
+            ],
+            "title":"BasicTikTokVideoAuthor"
+         },
+         "BasicTikTokVideoInfo":{
+            "properties":{
+               "uri":{
+                  "type":"string"
+               },
+               "url_list":{
+                  "items":{
+                     "type":"string"
+                  },
+                  "type":"array"
+               },
+               "meta":{
+                  "$ref":"#/components/schemas/BasicTikTokVideoInfoMeta"
+               }
+            },
+            "type":"object",
+            "required":[
+               "meta",
+               "uri",
+               "url_list"
+            ],
+            "title":"BasicTikTokVideoInfo"
+         },
+         "BasicTikTokVideoInfoMeta":{
+            "properties":{
+               "bitrate":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "duration":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "height":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "ratio":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "width":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               }
+            },
+            "type":"object",
+            "required":[
+               
+            ],
+            "title":"BasicTikTokVideoInfoMeta"
+         },
+         "CreateKeyBody":{
+            "properties":{
+               "issuer_id":{
+                  "type":"integer"
+               },
+               "user_id":{
+                  "type":"integer"
+               }
+            },
+            "type":"object",
+            "required":[
+               "issuer_id",
+               "user_id"
+            ],
+            "title":"CreateKeyBody"
+         },
+         "Genius":{
+            "properties":{
+               "url":{
+                  "type":"string"
+               },
+               "title":{
+                  "type":"string"
+               },
+               "artist":{
+                  "$ref":"#/components/schemas/Artist"
+               },
+               "thumbnail":{
+                  "type":"string"
+               },
+               "producers":{
+                  "oneOf":[
+                     {
+                        "items":{
+                           "type":"string"
+                        },
+                        "type":"array"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "lyrics":{
+                  "type":"string"
+               }
+            },
+            "type":"object",
+            "required":[
+               "artist",
+               "lyrics",
+               "thumbnail",
+               "title",
+               "url"
+            ],
+            "title":"Genius"
+         },
+         "ImageData":{
+            "properties":{
+               "height":{
+                  "type":"integer"
+               },
+               "width":{
+                  "type":"integer"
+               },
+               "url_list":{
+                  "items":{
+                     "type":"string"
+                  },
+                  "type":"array"
+               }
+            },
+            "type":"object",
+            "required":[
+               "height",
+               "url_list",
+               "width"
+            ],
+            "title":"ImageData"
+         },
+         "SoundCloudProfile":{
+            "properties":{
+               "id":{
+                  "type":"integer"
+               },
+               "username":{
+                  "type":"string"
+               },
+               "permalink":{
+                  "type":"string"
+               },
+               "permalink_url":{
+                  "type":"string"
+               },
+               "avatar_url":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "country":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "city":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "first_name":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "last_name":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "full_name":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "created_at":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "verified":{
+                  "type":"boolean"
+               },
+               "followers_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "followings_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "track_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "playlist_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "likes_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "description":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               }
+            },
+            "type":"object",
+            "required":[
+               "id",
+               "permalink",
+               "permalink_url",
+               "username",
+               "verified"
+            ],
+            "title":"SoundCloudProfile"
+         },
+         "TikTokImage":{
+            "properties":{
+               "display_image":{
+                  "$ref":"#/components/schemas/ImageData"
+               },
+               "owner_watermark_image":{
+                  "$ref":"#/components/schemas/ImageData"
+               },
+               "thumbnail":{
+                  "$ref":"#/components/schemas/ImageData"
+               }
+            },
+            "type":"object",
+            "required":[
+               "display_image",
+               "owner_watermark_image",
+               "thumbnail"
+            ],
+            "title":"TikTokImage"
+         },
+         "TikTokImagePostInfo":{
+            "properties":{
+               "cover":{
+                  "$ref":"#/components/schemas/TikTokImage"
+               },
+               "images":{
+                  "items":{
+                     "$ref":"#/components/schemas/TikTokImage"
+                  },
+                  "type":"array"
+               }
+            },
+            "type":"object",
+            "required":[
+               "cover",
+               "images"
+            ],
+            "title":"TikTokImagePostInfo"
+         },
+         "TikTokProfileTab":{
+            "properties":{
+               "show_music_tab":{
+                  "type":"boolean",
+                  "default":false
+               },
+               "show_question_tab":{
+                  "type":"boolean",
+                  "default":false
+               },
+               "show_playlist_tab":{
+                  "type":"boolean",
+                  "default":false
+               }
+            },
+            "type":"object",
+            "required":[
+               
+            ],
+            "title":"TikTokProfileTab"
+         },
+         "TikTokStatistics":{
+            "properties":{
+               "comment_count":{
+                  "type":"integer"
+               },
+               "digg_count":{
+                  "type":"integer"
+               },
+               "share_count":{
+                  "type":"integer"
+               }
+            },
+            "type":"object",
+            "required":[
+               "comment_count",
+               "digg_count",
+               "share_count"
+            ],
+            "title":"TikTokStatistics"
+         },
+         "TikTokUserBioLink":{
+            "properties":{
+               "link":{
+                  "type":"string"
+               },
+               "risk":{
+                  "type":"integer"
+               }
+            },
+            "type":"object",
+            "required":[
+               "link",
+               "risk"
+            ],
+            "title":"TikTokUserBioLink"
+         },
+         "TikTokUserInfo":{
+            "properties":{
+               "id":{
+                  "type":"string"
+               },
+               "unique_id":{
+                  "type":"string"
+               },
+               "nickname":{
+                  "type":"string"
+               },
+               "avatar_larger":{
+                  "type":"string"
+               },
+               "avatar_medium":{
+                  "type":"string"
+               },
+               "avatar_thumb":{
+                  "type":"string"
+               },
+               "signature":{
+                  "type":"string"
+               },
+               "verified":{
+                  "type":"boolean"
+               },
+               "private_account":{
+                  "type":"boolean"
+               },
+               "region":{
+                  "type":"string"
+               },
+               "bio_link":{
+                  "oneOf":[
+                     {
+                        "$ref":"#/components/schemas/TikTokUserBioLink"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "profile_tab":{
+                  "oneOf":[
+                     {
+                        "$ref":"#/components/schemas/TikTokProfileTab"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "stats":{
+                  "$ref":"#/components/schemas/TikTokUserStats"
+               }
+            },
+            "type":"object",
+            "required":[
+               "avatar_larger",
+               "avatar_medium",
+               "avatar_thumb",
+               "id",
+               "nickname",
+               "private_account",
+               "region",
+               "signature",
+               "stats",
+               "unique_id",
+               "verified"
+            ],
+            "title":"TikTokUserInfo"
+         },
+         "TikTokUserStats":{
+            "properties":{
+               "follower_count":{
+                  "type":"integer"
+               },
+               "following_count":{
+                  "type":"integer"
+               },
+               "heart_count":{
+                  "type":"integer"
+               },
+               "video_count":{
+                  "type":"integer"
+               },
+               "digg_count":{
+                  "type":"integer"
+               },
+               "friend_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               }
+            },
+            "type":"object",
+            "required":[
+               "digg_count",
+               "follower_count",
+               "following_count",
+               "heart_count",
+               "video_count"
+            ],
+            "title":"TikTokUserStats"
+         },
+         "TikTokVideo":{
+            "properties":{
+               "id":{
+                  "type":"integer"
+               },
+               "desc":{
+                  "type":"string"
+               },
+               "statistics_info":{
+                  "$ref":"#/components/schemas/TikTokStatistics"
+               },
+               "author_info":{
+                  "$ref":"#/components/schemas/BasicTikTokVideoAuthor"
+               },
+               "video_info":{
+                  "oneOf":[
+                     {
+                        "$ref":"#/components/schemas/BasicTikTokVideoInfo"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "image_post_info":{
+                  "oneOf":[
+                     {
+                        "$ref":"#/components/schemas/TikTokImagePostInfo"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "aweme_type":{
+                  "oneOf":[
+                     {
+                        "type":"integer",
+                        "default":0
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ],
+                  "default":0
+               }
+            },
+            "type":"object",
+            "required":[
+               "author_info",
+               "desc",
+               "id",
+               "statistics_info"
+            ],
+            "title":"TikTokVideo"
+         },
+         "Tracks":{
+            "properties":{
+               "artist":{
+                  "$ref":"#/components/schemas/SoundCloudProfile"
+               },
+               "tracks":{
+                  "items":{
+                     "$ref":"#/components/schemas/tracks_SoundCloudTrack"
+                  },
+                  "type":"array"
+               }
+            },
+            "type":"object",
+            "required":[
+               "artist",
+               "tracks"
+            ],
+            "title":"Tracks"
+         },
+         "track_SoundCloudTrack":{
+            "properties":{
+               "title":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "originalFilename":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "artworkUrl":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "mediaUpload":{
+                  
+               },
+               "created_at":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "permalink_url":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "likes_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "playback_count":{
+                  "oneOf":[
+                     {
+                        "type":"integer"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "description":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               },
+               "artist":{
+                  
+               }
+            },
+            "type":"object",
+            "required":[
+               "artist",
+               "mediaUpload"
+            ],
+            "title":"SoundCloudTrack"
+         },
+         "tracks_SoundCloudTrack":{
+            "properties":{
+               "id":{
+                  "type":"integer"
+               },
+               "kind":{
+                  "type":"string"
+               },
+               "title":{
+                  "type":"string"
+               },
+               "artwork_url":{
+                  "type":"string"
+               },
+               "created_at":{
+                  "type":"string"
+               },
+               "permalink_url":{
+                  "type":"string"
+               },
+               "likes_count":{
+                  "type":"integer"
+               },
+               "playback_count":{
+                  "type":"integer"
+               },
+               "description":{
+                  "oneOf":[
+                     {
+                        "type":"string"
+                     },
+                     {
+                        "type":"null"
+                     }
+                  ]
+               }
+            },
+            "type":"object",
+            "required":[
+               "artwork_url",
+               "created_at",
+               "id",
+               "kind",
+               "likes_count",
+               "permalink_url",
+               "playback_count",
+               "title"
+            ],
+            "title":"SoundCloudTrack"
+         }
       }
-    }
-  }
+   }
 }
