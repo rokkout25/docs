@@ -22,10 +22,10 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Scripting",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "resources/scripting/embeds",
+              "resources/scripting/variables"
             ]
           },
           {
