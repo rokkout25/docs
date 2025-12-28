@@ -11,26 +11,6 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Scripting",
-            "pages": [
-              "resources/scripting/embeds",
-              "resources/scripting/variables"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "API reference",
         "groups": [
           {
@@ -46,6 +26,32 @@
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete",
               "api-reference/endpoint/webhook"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "index",
+              "quickstart",
+              "development"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": ["resources/placeholder"],
+            "subgroups": [
+              {
+                "group": "Scripting",
+                "pages": [
+                  "resources/scripting/embeds",
+                  "resources/scripting/variables"
+                ]
+              }
             ]
           }
         ]
