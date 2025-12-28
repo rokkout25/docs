@@ -1,7 +1,7 @@
 ---
 title: "Embed Scripting"
-description: "Learn how to create dynamic embeds and utilize the variables provided by vile's framework.
-Embeds are a powerful way to present content neatly in Discord messages. Each embed consists of key-value pairs that define its structure and styling."
+description: "Learn how to create embeds and utilize the provided variables.
+"
 ---
 
 ### Understanding Structure
@@ -14,7 +14,7 @@ Embeds use a **key-value pair** system, where the key is the parameter (like con
 ,ce {content: {user.mention}}{description: welcome to {guild.name}!}
 ```
 
-![Embed](/resources/embed.png)
+![Embed](/resources/scripting/embed.png)
 
 ### Author, Field, Footer, and Buttons
 
@@ -28,7 +28,7 @@ For author, field, footer, and buttons it's a little different. You would still 
 
 #### Formats
 
-- \*\*Author: \*\*`(name) && [icon] && [url]`
-- \*\*Field: \*\*`(name) && (value) && [inline]`
+- **Author:** `(name) && [icon] && [url]`
+- **Field:** `(name) && (value) && [inline]`
 - **Footer:** `(name) && (value)`
-- \*\*Button:  \*\*`(label) && (url) && [style]`
+- **Button:**  `(label) && (url) && [style]`

@@ -1,3 +1,97 @@
 ---
 title: "Variables"
+description: "Display of all the variables that can be used on the bot."
 ---
+
+> You can use these variables just like how they are shown, just add the variable into your script and the bot will automatically replace your variable with the correct values.
+
+<Tabs>
+  <Tab title="User">
+    <Info>
+      The variables below`{user.bot}` are only available for users who are members of the server.
+    </Info>
+    - `{user.name}` - The user’s username
+    - `{user.display_name}` - The user’s display name (nickname if in a guild)
+    - `{user.mention}` - Mentions the user
+    - `{user.avatar}` - The user’s avatar URL
+    - `{user.id}` - The user’s Discord ID
+    - `{user.bot}` - Whether the user is a bot (`True`/`False`)
+    - `{user.created_at}` - When the user’s account was created
+    - `{user.guild_avatar}` - The user’s server-specific avatar URL
+    - `{user.joined_at}` - When the user joined the guild
+    - `{user.join_position}` - The user’s position in the join order
+    - `{user.boost}` - Whether the user is boosting the server (`True`/`False`)
+    - `{user.boost_since}` - When the user started boosting the server
+  </Tab>
+  <Tab title="Guild">
+    - `{guild.name}` - The server’s name
+    - `{guild.id}` - The server’s ID
+    - `{guild.icon}` - The server’s icon URL
+    - `{guild.banner}` - The server’s banner URL
+    - `{guild.count}` - The server’s member count
+    - `{guild.created_at}` - When the server was created
+    - `{guild.boost_count}` - Number of server boosts
+    - `{guild.booster_count}` - Number of boosting members
+    - `{guild.boost_tier}` - Current boost tier of the server
+    - `{guild.vanity_url}` - The server’s custom vanity URL
+  </Tab>
+  <Tab title="Channel">
+    - `{channel.name}` - The channel’s name
+    - `{channel.id}` - The channel’s ID
+    - `{channel.mention}` - Mentions the channel
+    - `{channel.topic}` - The channel’s topic
+    - `{channel.type}` - The channel type (text, voice, etc.)
+    - `{channel.category_id}` - The ID of the parent category
+    - `{channel.category_name}` - The name of the parent category
+    - `{channel.position}` - Channel position in the server
+    - `{channel.slowmode_delay}` - Slowmode delay in seconds
+  </Tab>
+  <Tab title="LastFM">
+    <Info>
+      Yes, I know im missing user idk how i forgot it I will be adding it soon.
+    </Info>
+    - `{track.name}` - The track’s name
+    - `{track.url}` - URL to the track’s LastFM page
+    - `{track.plays}` - Total plays for the track
+    - `{track.cover}` - URL to the track’s cover image
+    - `{album.name}` - The album’s name
+    - `{album.url}` - URL to the album’s LastFM page
+    - `{album.cover}` - URL to the album’s cover image
+    - `{album.plays}` - Total plays for the album
+    - `{artist.name}` - The artist’s name
+    - `{artist.url}` - URL to the artist’s LastFM page
+    - `{artist.plays}` - Total plays for the artist (if available)
+    - `{artist.image}` - URL to the artist’s image
+  </Tab>
+  <Tab title="Twitter">
+    - `{tweet.id}` - The tweet’s ID
+    - `{tweet.url}` - URL to the tweet
+    - `{tweet.text}` - The tweet’s text content
+    - `{tweet.created_at}` - When the tweet was created
+    - `{tweet.possibly_sensitive}` - Whether the tweet is marked as sensitive (`True`/`False`)
+    - `{tweet.author.id}` - The author’s ID
+    - `{tweet.author.username}` - The author’s username
+    - `{tweet.author.name}` - The author’s display name
+    - `{tweet.author.avatar}` - The author’s avatar URL
+    - `{tweet.author.posts}` - Number of posts by the author
+    - `{tweet.author.followers}` - Number of followers the author has
+    - `{tweet.author.following}` - Number of users the author is following
+  </Tab>
+  <Tab title="YouTube">
+    - `{youtube.id}` - Video ID
+    - `{youtube.url}` - URL to the video
+    - `{youtube.title}` - Video title
+    - `{youtube.channel.id}` - Channel ID
+    - `{youtube.channel.name}` - Channel name
+    - `{youtube.channel.url}` - Channel URL
+  </Tab>
+  <Tab title="SoundCloud">
+    - `{soundcloud.title}` - Track title
+    - `{soundcloud.cover}` - Track artwork URL
+    - `{soundcloud.created_at}` - When the track was uploaded
+    - `{soundcloud.url}` - URL to the track
+    - `{soundcloud.artist.username}` - Artist username
+    - `{soundcloud.artist.permalink_url}` - Artist profile URL
+    - `{soundcloud.artist.avatar_url}` - Artist avatar URL
+  </Tab>
+</Tabs>
