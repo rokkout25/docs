@@ -22,16 +22,10 @@
             ]
           },
           {
-            "group": "Resources",
-            "pages": [],
-            "subgroups": [
-              {
-                "group": "Scripting",
-                "pages": [
-                  "resources/scripting/embeds",
-                  "resources/scripting/variables"
-                ]
-              }
+            "group": "Scripting",
+            "pages": [
+              "resources/scripting/embeds",
+              "resources/scripting/variables"
             ]
           }
         ]
