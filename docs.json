@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "vile",
   "colors": {
     "primary": "#7a74bc",
@@ -22,27 +22,16 @@
             ]
           },
           {
-            "group": "Scripting",
-            "pages": [
-              "resources/scripting/embeds",
-              "resources/scripting/variables"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+            "group": "Resources",
+            "pages": [],
+            "subgroups": [
+              {
+                "group": "Scripting",
+                "pages": [
+                  "resources/scripting/embeds",
+                  "resources/scripting/variables"
+                ]
+              }
             ]
           }
         ]
@@ -86,14 +75,14 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   }
 }
