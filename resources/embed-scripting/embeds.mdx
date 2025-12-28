@@ -1,0 +1,34 @@
+---
+title: "Embed Scripting"
+description: "Learn how to create dynamic embeds and utilize the variables provided by vile's framework.
+Embeds are a powerful way to present content neatly in Discord messages. Each embed consists of key-value pairs that define its structure and styling."
+---
+
+### Understanding Structure
+
+Embeds use a **key-value pair** system, where the key is the parameter (like content, description, or color) and the value is the content you want to display.
+
+### Basic Example
+
+```
+,ce {content: {user.mention}}{description: welcome to {guild.name}!}
+```
+
+![Embed](/resources/embed.png)
+
+### Author, Field, Footer, and Buttons
+
+For author, field, footer, and buttons it's a little different. You would still do `{author: }` but when you want the icon and url, you would need to seperate them by `&&`, that goes for the others as well.
+
+<Info>
+  For author, if you would not like icon but you would like url you could leave icon blank and skip it, for example: `` `name && && url` ``
+
+  Buttons will \*\*only \*\*work if you have a url to them, otherwise they will be grayed out and disabled.
+</Info>
+
+#### Formats
+
+- \*\*Author: \*\*`(name) && [icon] && [url]`
+- \*\*Field: \*\*`(name) && (value) && [inline]`
+- **Footer:** `(name) && (value)`
+- \*\*Button:  \*\*`(label) && (url) && [style]`
