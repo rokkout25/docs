@@ -21,7 +21,7 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Resources",
             "pages": [
               {
                 "group": "Customization",
@@ -30,12 +30,7 @@
                   "resources/customize/server",
                   "resources/customize/user"
                 ]
-              }
-            ]
-          },
-          {
-            "group": "Resources",
-            "pages": [
+              },
               {
                 "group": "Scripting",
                 "icon": "scroll",
