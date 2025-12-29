@@ -214,98 +214,158 @@
             "deprecated":false
          }
       },
-      "/soundcloud/profile": {
-              "get": {
-                "summary": "Profile",
-                "description": "Get SoundCloud profile information",
-                "operationId": "SoundcloudProfileUsernameProfile",
-                "parameters": [
-                  {
-                    "name": "username",
-                    "in": "query",
-                    "schema": { "type": "string" },
-                    "required": true,
-                    "description": "SoundCloud username to fetch profile for"
-                  }
-                ],
-                "responses": {
-                  "200": {
-                    "description": "Request fulfilled, document follows",
-                    "content": {
-                      "application/json": {
-                        "schema": { "$ref": "#/components/schemas/SoundCloudProfile" }
-                      }
-                    }
-                  },
-                  "400": {
-                    "description": "Bad request syntax or unsupported method",
-                    "content": {
-                      "application/json": {
-                        "schema": {
-                          "properties": {
-                            "status_code": { "type": "integer" },
-                            "detail": { "type": "string" },
-                            "extra": {
-                              "additionalProperties": {},
-                              "type": ["null", "object", "array"]
-                            }
-                          },
-                          "type": "object",
-                          "required": ["detail", "status_code"]
-                        }
-                      }
-                    }
-                  }
-                },
-                "deprecated": false
-              }
-            },
-         "/soundcloud/tracks": {
-           "get": {
-             "summary": "Tracks",
-             "description": "Get SoundCloud tracks from a profile",
-             "operationId": "SoundcloudTracksUserIdTracks",
-             "parameters": [
+      "/soundcloud/profile":{
+         "get":{
+            "summary":"Profile",
+            "description":"Get SoundCloud profile information",
+            "operationId":"SoundcloudProfileUsernameProfile",
+            "parameters":[
                {
-                 "name": "user_id",
-                 "in": "query",
-                 "schema": { "type": "string" },
-                 "required": true,
-                 "description": "SoundCloud user ID to fetch tracks for"
+                  "name":"username",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
                }
-             ],
-             "responses": {
-               "200": {
-                 "description": "Request fulfilled, document follows",
-                 "content": {
-                   "application/json": {
-                     "schema": { "$ref": "#/components/schemas/Tracks" }
-                   }
-                 }
-               },
-               "400": {
-                 "description": "Bad request syntax or unsupported method",
-                 "content": {
-                   "application/json": {
-                     "schema": {
-                       "properties": {
-                         "status_code": { "type": "integer" },
-                         "detail": { "type": "string" },
-                         "extra": {
-                           "additionalProperties": {},
-                           "type": ["null", "object", "array"]
-                         }
-                       },
-                       "type": "object",
-                       "required": ["detail", "status_code"]
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/SoundCloudProfile"
+                        }
                      }
-                   }
-                 }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
                }
-             },
-             "deprecated": false
-           }
-         },
+            },
+            "deprecated":false
+         }
+      },
+      "/soundcloud/tracks":{
+         "get":{
+            "summary":"Tracks",
+            "description":"Get SoundCloud tracks from a profile",
+            "operationId":"SoundcloudTracksUserIdTracks",
+            "parameters":[
+               {
+                  "name":"user_id",
+                  "in":"path",
+                  "schema":{
+                     "type":"string"
+                  },
+                  "required":true,
+                  "deprecated":false
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Request fulfilled, document follows",
+                  "headers":{
+                     
+                  },
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "$ref":"#/components/schemas/Tracks"
+                        }
+                     }
+                  }
+               },
+               "400":{
+                  "description":"Bad request syntax or unsupported method",
+                  "content":{
+                     "application/json":{
+                        "schema":{
+                           "properties":{
+                              "status_code":{
+                                 "type":"integer"
+                              },
+                              "detail":{
+                                 "type":"string"
+                              },
+                              "extra":{
+                                 "additionalProperties":{
+                                    
+                                 },
+                                 "type":[
+                                    "null",
+                                    "object",
+                                    "array"
+                                 ]
+                              }
+                           },
+                           "type":"object",
+                           "required":[
+                              "detail",
+                              "status_code"
+                           ],
+                           "description":"Validation Exception",
+                           "examples":[
+                              {
+                                 "status_code":400,
+                                 "detail":"Bad Request",
+                                 "extra":{
+                                    
+                                 }
+                              }
+                           ]
+                        }
+                     }
+                  }
+               }
+            },
+            "deprecated":false
+         }
+      },
       "/collage":{
          "post":{
             "summary":"Collage",
