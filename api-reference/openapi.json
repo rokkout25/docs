@@ -297,7 +297,7 @@
             "operationId":"SoundcloudTracksUserIdTracks",
             "parameters":[
                {
-                  "name":"user_id",
+                  "name":"username",
                   "in":"path",
                   "schema":{
                      "type":"string"
