@@ -5,8 +5,8 @@
   "copyPage": false,
   "colors": {
     "primary": "#7a74bc",
-    "light": "#f8f8fa",
-    "dark": "#454581"
+    "light": "#7a74bc",
+    "dark": "#7a74bc"
   },
   "favicon": "/vileTransparent.png",
   "navigation": {
@@ -18,6 +18,19 @@
             "group": "Getting started",
             "pages": [
               "index"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              {
+                "group": "Customization",
+                "icon": "paintbrush",
+                "pages": [
+                  "resources/customize/server",
+                  "resources/customize/user"
+                ]
+              }
             ]
           },
           {
