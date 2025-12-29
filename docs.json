@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "vile",
+  "copyPage": false,
   "colors": {
     "primary": "#7a74bc",
     "light": "#f8f8fa",
