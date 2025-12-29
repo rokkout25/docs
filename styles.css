@@ -2,3 +2,9 @@
     width: 55px;
     height: 55px;
 }
+
+.docs-footer,
+.pagination,
+[class*="pagination"] {
+  display: none !important;
+}
