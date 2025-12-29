@@ -8,6 +8,7 @@
 [class*="pagination"] {
   display: none !important;
 }
-.docs-footer {
+.docs-footer__branding,
+footer .powered-by {
   display: none !important;
 }
