@@ -8,3 +8,6 @@
 [class*="pagination"] {
   display: none !important;
 }
+.docs-footer {
+  display: none !important;
+}
